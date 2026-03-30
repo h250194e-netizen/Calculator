@@ -1,2 +1,2 @@
-# Calculator
-A simple, client-side stock management system for a food warehouse, built with HTML, CSS, and vanilla JavaScript. Features include adding/deleting items, tracking expiry dates, and saving data to localStorage. Includes four switchable color themes. Perfect for learning front-end basics.
+A clean, simple calculator built with vanilla JavaScript, HTML, and CSS.
+This project handles basic arithmetic operations (+, -, *, /) and serves as a great introduction to DOM manipulation and event handling for beginner web developers. It's lightweight, responsive, and easy to customize.
