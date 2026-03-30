@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Calculator</title>
+<style>
+    body {
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: sans-serif;
+    }
+    .calculator {
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+    .calculator-display {
+        background-color: #222; /* First color */
+        color: #fff;
+        font-size: 2em;
+        padding: 20px;
+        text-align: right;
+        border: none;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .calculator-keys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+    }
+    button {
+        padding: 20px;
+        font-size: 1.5em;
+        border: none;
+        cursor: pointer;
+        background-color: #e0e0e0; /* Second color */
+        transition: background-color 0.2s;
+    }
+    button:hover {
+        background-color: #d0d0d0;
+    }
+    .operator, .equal-sign {
+        background-color: #f39c12; /* Third color */
+        color: white;
+    }
+    .operator:hover, .equal-sign:hover {
+        background-color: #e68a00;
+    }
+    .all-clear {
+        background-color: #e74c3c;
+        color: white;
+    }
+    .all-clear:hover {
+        background-color: #c0392b;
+    }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" class="calculator-display" value="" disabled />
+    <div class="calculator-keys">
+        <button type="button" class="operator" value="+">+</button>
+        <button type="button" class="operator" value="-">-</button>
+        <button type="button" class="operator" value="*">&times;</button>
+        <button type="button" class="operator" value="/">&divide;</button>
+
+        <button type="button" value="7">7</button>
+        <button type="button" value="8">8</button>
+        <button type="button" value="9">9</button>
+
+        <button type="button" value="4">4</button>
+        <button type="button" value="5">5</button>
+        <button type="button" value="6">6</button>
+
+        <button type="button" value="1">1</button>
+        <button type="button" value="2">2</button>
+        <button type="button" value="3">3</button>
+
+        <button type="button" value="0">0</button>
+        <button type="button" class="decimal" value=".">.</button>
+        <button type="button" class="all-clear" value="all-clear">AC</button>
+
+        <button type="button" class=
+        <button type="button" class="equal-sign" value="=">=</button>
+
+    </div>
+</div>
+
+<script>
+    const calculator = document.querySelector('.calculator');
+    const keys = calculator.querySelector('.calculator-keys');
+    const display = calculator.querySelector('.calculator-display');
+
+    keys.addEventListener('click', e => {
+        if (e.target.matches('button')) {
+            const key = e.target;
+            const action = key.value;
+            const displayedNum = display.value;
+
+            if (
+                action === '+' ||
+                action === '-' ||
+                action === '*' ||
+                action === '/'
+            ) {
+                display.value = displayedNum + ' ' + action + ' ';
+            } else if (action === '.') {
+                display.value = displayedNum + '.';
+            } else if (action === '=') {
+                try {
+                    display.value = eval(displayedNum.replace(/×/g, '*').replace(/÷/g, '/'));
+                } catch (error) {
+                    display.value = 'Error';
+                }
+            } else if (action === 'all-clear') {
+                display.value = '';
+            } else {
+                display.value = displayedNum + action;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
